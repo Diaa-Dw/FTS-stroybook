@@ -1,7 +1,8 @@
+import { expect, jest } from "@storybook/jest";
 import type { Meta, StoryObj } from "@storybook/react";
+import { userEvent, within } from "@storybook/testing-library";
 import { ArrowRight, Download, Trash2, Upload } from "lucide-react";
 import type { ComponentProps } from "react";
-
 import { Button } from "..";
 
 type StoryProps = ComponentProps<typeof Button>;
@@ -12,9 +13,7 @@ const meta: Meta<StoryProps> = {
   tags: ["autodocs"],
   args: {
     children: "Button",
-  },
-  argTypes: {
-    onClick: { action: "clicked" },
+    onClick: jest.fn(),
   },
 };
 
@@ -109,6 +108,14 @@ export const Solid: Story = {
   args: {
     variant: "solid",
   },
+
+  play: async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement);
+    const button = await canvas.getByRole("button");
+    await userEvent.click(button);
+
+    expect(args.onClick).toHaveBeenCalled();
+  },
 };
 
 export const Outlined: Story = {
@@ -150,6 +157,14 @@ export const Loading: Story = {
     loading: true,
     children: "Loading...",
   },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = await canvas.getByRole("button");
+    const spinner = await canvas.getByLabelText("loading");
+
+    expect(button).toBeDisabled();
+    expect(spinner).toBeInTheDocument();
+  },
 };
 
 export const Disabled: Story = {
@@ -157,13 +172,29 @@ export const Disabled: Story = {
     disabled: true,
     children: "Disabled",
   },
+
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = await canvas.getByRole("button");
+
+    expect(button).toBeDisabled();
+  },
 };
 
 export const WithDecorators: Story = {
   args: {
     color: "danger",
-    startDecorator: <Trash2 />,
-    endDecorator: <ArrowRight />,
+    startDecorator: <Trash2 data-testid='start-icon' />,
+    endDecorator: <ArrowRight data-testid='end-icon' />,
     children: "Delete",
+  },
+
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const startDecorator = await canvas.getByTestId("start-icon");
+    const endDecorator = await canvas.getByTestId("end-icon");
+
+    expect(startDecorator).toBeVisible();
+    expect(endDecorator).toBeVisible();
   },
 };

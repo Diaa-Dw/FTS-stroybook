@@ -2,11 +2,11 @@ import styled, { css } from "styled-components";
 import type { Variant, Size, Color } from "./Button.type";
 
 const colorMap: Record<Color, string> = {
-  primary: "#1976d2",
-  neutral: "#6c757d",
-  danger: "#d32f2f",
-  success: "#388e3c",
-  warning: "#f87102",
+  primary: "#13407a",
+  neutral: "#3e4042",
+  danger: "#7a0000",
+  success: "#1f4d1f",
+  warning: "#7a4700",
 };
 
 const variantStyles = {
@@ -22,7 +22,7 @@ const variantStyles = {
   `,
   soft: css`
     background-color: color-mix(in srgb, var(--color) 80%, transparent);
-    color: white;
+    color: rgb(255, 255, 255);
     border: none;
   `,
   plain: css`

@@ -9,11 +9,18 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "test-storybook": "test-storybook"
+
   },
   "dependencies": {
+    "@storybook/jest": "^0.2.2",
+    "@storybook/testing-library": "^0.2.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.511.0",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "styled-components": "^6.1.18"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.6",

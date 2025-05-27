@@ -1,54 +1,77 @@
-# React + TypeScript + Vite
+# 🧩 Button Component Library
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A flexible, theme-ready React button component built with accessibility, performance, and reusability in mind. Styled in multiple variants, states, and sizes — and fully documented with **Storybook**.
 
-Currently, two official plugins are available:
+🔗 **Live Docs**: [View Storybook](https://682ae6cca19fa0f31878516a-ghcflcgzut.chromatic.com/?path=/docs/components-button--docs)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+* 🎨 4 design variants: `solid`, `outlined`, `soft`, and `plain`
+* 🌈 5 color themes: `primary`, `neutral`, `danger`, `success`, `warning`
+* 📏 3 sizes: `sm`, `md`, `lg`
+* 🔁 States: `disabled`, `loading`
+* 🧩 Support for decorators/icons
+* ♿ Accessible by default
+* 📘 Interactive documentation via Storybook
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+---
+
+## 📦 Tech Stack
+
+* React + TypeScript
+* Styled Components
+* [Storybook](https://storybook.js.org/) for UI documentation
+* [Chromatic](https://www.chromatic.com/) for live previews
+
+---
+
+## 🖼️ Variants Preview
+
+| Variant      | Appearance                                 |
+| ------------ | ------------------------------------------ |
+| **Solid**    | Filled background with strong emphasis     |
+| **Outlined** | Transparent background with colored border |
+| **Soft**     | Light tinted background                    |
+| **Plain**    | Minimal, text-like style                   |
+
+![Button Variants and States](https://github.com/user-attachments/assets/84184853-197a-4f21-ba12-a96c5bde0205)
+<sub>🖼️ Example showcasing all variants, sizes, states, and decorators</sub>
+
+---
+
+## 🧰 Props Reference
+
+| Prop       | Type                                                           | Default     | Description                          |
+| ---------- | -------------------------------------------------------------- | ----------- | ------------------------------------ |
+| `variant`  | `'solid' \| 'outlined' \| 'soft' \| 'plain'`                   | `'solid'`   | Button style variant                 |
+| `color`    | `'primary' \| 'neutral' \| 'danger' \| 'success' \| 'warning'` | `'primary'` | Color theme                          |
+| `size`     | `'sm' \| 'md' \| 'lg'`                                         | `'md'`      | Size of the button                   |
+| `disabled` | `boolean`                                                      | `false`     | Disables the button                  |
+| `loading`  | `boolean`                                                      | `false`     | Shows a loading spinner              |
+| `icon`     | `ReactNode`                                                    | `null`      | Optional icon (e.g. upload/download) |
+| `onClick`  | `() => void`                                                   | –           | Click handler                        |
+
+---
+
+## 🔍 Development
+
+### Run Storybook locally
+
+```bash
+npm install
+npm run storybook
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🧪 Visual Testing
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+Deployed and versioned using **Chromatic**, enabling visual regression testing and live previews.
+
+---
+
+## 📄 License
+
+MIT © 2025 Diaa Dwikat

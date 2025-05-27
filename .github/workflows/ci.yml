@@ -1,0 +1,29 @@
+jobs:
+  lint-test-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Start Storybook
+        run: npm run storybook &
+
+      - name: Wait for Storybook to be ready
+        run: npx wait-on http://localhost:6060
+
+      - name: Run Tests
+        run: npm run test-storybook
+
+      - name: Build Storybook
+        run: npm run build-storybook
